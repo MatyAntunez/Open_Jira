@@ -1,11 +1,6 @@
 import { useReducer } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
-
-
 import { EntriesContext, entriesReducer } from './';
-
-
 
 
 
@@ -48,7 +43,12 @@ export const EntriesProvider = ({ children }) => {
         }
 
         dispatch({ type: '[Entry] Add-Entry', payload: newEntry });
-    }
+    };
+
+
+    const updateEntry = (entry) => {
+        dispatch({type: '[Entry] Entry-Updated', payload: entry})
+    };
 
 
     return (
@@ -57,6 +57,7 @@ export const EntriesProvider = ({ children }) => {
 
             // Methods
             addNewEntry,
+            updateEntry,
 
         }}>
             {children}

@@ -1,15 +1,23 @@
+import { UIContext } from "@/context/ui";
 import { Card, CardActionArea, CardActions, CardContent, Typography } from "@mui/material";
+import { useContext } from "react";
 
 
 export const EntryCard = ({ entry }) => {
 
+    const { startDraging, endDraging } = useContext(UIContext);
+
+
+
+
 
     const onDragStart = (event) => {
         event.dataTransfer.setData('text', entry._id)
+        startDraging();
     };
 
-    const onDragEnd = ()=>{
-
+    const onDragEnd = () => {
+        endDraging();
     };
 
 

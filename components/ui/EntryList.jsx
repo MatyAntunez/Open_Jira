@@ -1,8 +1,15 @@
-import { useContext, useMemo } from 'react';
+import { FC, useContext, useMemo, DragEvent } from 'react';
 import { List, Paper } from '@mui/material';
+
 import { EntriesContext } from '../../context/entries';
 import { UIContext } from '../../context/ui';
+
+
 import { EntryCard } from './';
+
+import styles from './EntryList.module.css';
+
+
 
 
 
@@ -15,16 +22,16 @@ export const EntryList = ({ status }) => {
 
     const allowDrop = ( event ) => {
         event.preventDefault();
-    };
+    }
 
     const onDropEntry = ( event) => {
         const id = event.dataTransfer.getData('text');
         
-        // const entry = entries.find( e => e._id === id );
-        // entry.status = status;
-        // updateEntry( entry );
-        // endDragging();
-    };
+        const entry = entries.find( e => e._id === id );
+        entry.status = status;
+        updateEntry( entry );
+        endDragging();
+    }
 
       
     return (
@@ -48,19 +55,3 @@ export const EntryList = ({ status }) => {
         </div>
     )
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

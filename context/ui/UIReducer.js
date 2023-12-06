@@ -20,6 +20,16 @@ export const uiReducer = (state = UI_INITIAL_STATE, action) => {
                 ...state,
                 isAddingEntry: action.payload
             }
+        case 'UI - Start Dragging':
+            return {
+                ...state,
+                dragStarted: true
+            }
+        case 'UI - End Dragging':
+            return {
+                ...state,
+                dragStarted: false
+            }
 
 
 
