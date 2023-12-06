@@ -1,5 +1,4 @@
 import { UI_INITIAL_STATE } from ".";
-import { uiCloseSidebar, uiOpenSidebar } from "./actions";
 
 
 
@@ -15,6 +14,11 @@ export const uiReducer = (state = UI_INITIAL_STATE, action) => {
             return {
                 ...state,
                 sidemenuOpen: false
+            }
+        case 'UI - Set isAddingEntry':
+            return {
+                ...state,
+                isAddingEntry: action.payload
             }
 
 

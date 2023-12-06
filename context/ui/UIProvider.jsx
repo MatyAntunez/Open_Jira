@@ -1,9 +1,9 @@
-
 import { useReducer } from 'react';
 import { UIContext, uiReducer } from '.';
 
 export const UI_INITIAL_STATE = {
-  sidemenuOpen: false
+  sidemenuOpen: false,
+  isAddingEntry: false,
 };
 
 export const UIProvider = ({ children }) => {
@@ -18,6 +18,10 @@ export const UIProvider = ({ children }) => {
     dispatch({ type: 'UI_CLOSE_SIDEBAR' })
   };
 
+  const setIsAddingEntry = (isAdding) => {
+    dispatch({type: 'UI - Set isAddingEntry', payload: isAdding})
+  };
+
   return (
     <UIContext.Provider value={{
       sidemenuOpen: state.sidemenuOpen,
@@ -25,6 +29,8 @@ export const UIProvider = ({ children }) => {
       //methods
       openSideMenu,
       closeSideMenu,
+      
+      setIsAddingEntry,
     }}>
       {children}
     </UIContext.Provider>
